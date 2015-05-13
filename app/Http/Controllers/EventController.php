@@ -1,13 +1,15 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use App\Repositories\EventRepository;
+use Illuminate\Http\Request;
 
 /**
  * Class EventController
  * @package App\Http\Controllers
  */
-class EventController extends Controller {
+class EventController extends Controller
+{
+    protected $model;
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -26,29 +28,33 @@ class EventController extends Controller {
 	 */
 	public function create()
 	{
-		//
+
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param EventRepository $repository
+     * @param Request $request
+     * @return Response
+     */
+	public function store(EventRepository $repository, Request $request)
 	{
-		//
+        $parameters = $request->json()->all();
+
+        return $repository->create($parameters);
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show(EventRepository $repository)
+    /**
+     * Display the specified resource.
+     *
+     * @param EventRepository $repository
+     * @param  int $id
+     * @return Response
+     */
+	public function show(EventRepository $repository, $id)
 	{
-
-		return $repository->find();
+		return $repository->find($id);
 	}
 
 	/**

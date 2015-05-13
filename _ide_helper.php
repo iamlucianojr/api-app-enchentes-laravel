@@ -1,7 +1,7 @@
 <?php
 /**
  * An helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.0.27 on 2015-04-17.
+ * Generated for Laravel 5.0.31 on 2015-05-12.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -558,6 +558,16 @@ namespace {
         }
         
         /**
+         * Get the application's deferred services.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function getDeferredServices(){
+            return \Illuminate\Foundation\Application::getDeferredServices();
+        }
+        
+        /**
          * Set the application's deferred services.
          *
          * @param array $services
@@ -566,6 +576,17 @@ namespace {
          */
         public static function setDeferredServices($services){
             \Illuminate\Foundation\Application::setDeferredServices($services);
+        }
+        
+        /**
+         * Add an array of services to the application's deferred services.
+         *
+         * @param array $services
+         * @return void 
+         * @static 
+         */
+        public static function addDeferredServices($services){
+            \Illuminate\Foundation\Application::addDeferredServices($services);
         }
         
         /**
@@ -2601,13 +2622,87 @@ namespace {
         }
         
         /**
+         * Begin a fluent query against a database collection.
+         *
+         * @param string $collection
+         * @return \Jenssegers\Mongodb\QueryBuilder 
+         * @static 
+         */
+        public static function collection($collection){
+            return \Jenssegers\Mongodb\Connection::collection($collection);
+        }
+        
+        /**
+         * Begin a fluent query against a database collection.
+         *
+         * @param string $table
+         * @return \Jenssegers\Mongodb\QueryBuilder 
+         * @static 
+         */
+        public static function table($table){
+            return \Jenssegers\Mongodb\Connection::table($table);
+        }
+        
+        /**
+         * Get a MongoDB collection.
+         *
+         * @param string $name
+         * @return \Jenssegers\Mongodb\MongoDB 
+         * @static 
+         */
+        public static function getCollection($name){
+            return \Jenssegers\Mongodb\Connection::getCollection($name);
+        }
+        
+        /**
          * Get a schema builder instance for the connection.
          *
-         * @return \Illuminate\Database\Schema\MySqlBuilder 
+         * @return \Jenssegers\Mongodb\Schema\Builder 
          * @static 
          */
         public static function getSchemaBuilder(){
-            return \Illuminate\Database\MySqlConnection::getSchemaBuilder();
+            return \Jenssegers\Mongodb\Connection::getSchemaBuilder();
+        }
+        
+        /**
+         * Get the MongoDB database object.
+         *
+         * @return \Jenssegers\Mongodb\MongoDB 
+         * @static 
+         */
+        public static function getMongoDB(){
+            return \Jenssegers\Mongodb\Connection::getMongoDB();
+        }
+        
+        /**
+         * return MongoClient object
+         *
+         * @return \Jenssegers\Mongodb\MongoClient 
+         * @static 
+         */
+        public static function getMongoClient(){
+            return \Jenssegers\Mongodb\Connection::getMongoClient();
+        }
+        
+        /**
+         * Get the elapsed time since a given starting point.
+         *
+         * @param int $start
+         * @return float 
+         * @static 
+         */
+        public static function getElapsedTime($start){
+            return \Jenssegers\Mongodb\Connection::getElapsedTime($start);
+        }
+        
+        /**
+         * Get the PDO driver name.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getDriverName(){
+            return \Jenssegers\Mongodb\Connection::getDriverName();
         }
         
         /**
@@ -2618,7 +2713,7 @@ namespace {
          */
         public static function useDefaultQueryGrammar(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\MySqlConnection::useDefaultQueryGrammar();
+            \Jenssegers\Mongodb\Connection::useDefaultQueryGrammar();
         }
         
         /**
@@ -2629,7 +2724,7 @@ namespace {
          */
         public static function useDefaultSchemaGrammar(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\MySqlConnection::useDefaultSchemaGrammar();
+            \Jenssegers\Mongodb\Connection::useDefaultSchemaGrammar();
         }
         
         /**
@@ -2640,19 +2735,7 @@ namespace {
          */
         public static function useDefaultPostProcessor(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\MySqlConnection::useDefaultPostProcessor();
-        }
-        
-        /**
-         * Begin a fluent query against a database table.
-         *
-         * @param string $table
-         * @return \Illuminate\Database\Query\Builder 
-         * @static 
-         */
-        public static function table($table){
-            //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::table($table);
+            \Jenssegers\Mongodb\Connection::useDefaultPostProcessor();
         }
         
         /**
@@ -2664,7 +2747,7 @@ namespace {
          */
         public static function raw($value){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::raw($value);
+            return \Jenssegers\Mongodb\Connection::raw($value);
         }
         
         /**
@@ -2677,7 +2760,7 @@ namespace {
          */
         public static function selectOne($query, $bindings = array()){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::selectOne($query, $bindings);
+            return \Jenssegers\Mongodb\Connection::selectOne($query, $bindings);
         }
         
         /**
@@ -2690,7 +2773,7 @@ namespace {
          */
         public static function selectFromWriteConnection($query, $bindings = array()){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::selectFromWriteConnection($query, $bindings);
+            return \Jenssegers\Mongodb\Connection::selectFromWriteConnection($query, $bindings);
         }
         
         /**
@@ -2704,7 +2787,7 @@ namespace {
          */
         public static function select($query, $bindings = array(), $useReadPdo = true){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::select($query, $bindings, $useReadPdo);
+            return \Jenssegers\Mongodb\Connection::select($query, $bindings, $useReadPdo);
         }
         
         /**
@@ -2717,7 +2800,7 @@ namespace {
          */
         public static function insert($query, $bindings = array()){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::insert($query, $bindings);
+            return \Jenssegers\Mongodb\Connection::insert($query, $bindings);
         }
         
         /**
@@ -2730,7 +2813,7 @@ namespace {
          */
         public static function update($query, $bindings = array()){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::update($query, $bindings);
+            return \Jenssegers\Mongodb\Connection::update($query, $bindings);
         }
         
         /**
@@ -2743,7 +2826,7 @@ namespace {
          */
         public static function delete($query, $bindings = array()){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::delete($query, $bindings);
+            return \Jenssegers\Mongodb\Connection::delete($query, $bindings);
         }
         
         /**
@@ -2756,7 +2839,7 @@ namespace {
          */
         public static function statement($query, $bindings = array()){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::statement($query, $bindings);
+            return \Jenssegers\Mongodb\Connection::statement($query, $bindings);
         }
         
         /**
@@ -2769,7 +2852,7 @@ namespace {
          */
         public static function affectingStatement($query, $bindings = array()){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::affectingStatement($query, $bindings);
+            return \Jenssegers\Mongodb\Connection::affectingStatement($query, $bindings);
         }
         
         /**
@@ -2781,7 +2864,7 @@ namespace {
          */
         public static function unprepared($query){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::unprepared($query);
+            return \Jenssegers\Mongodb\Connection::unprepared($query);
         }
         
         /**
@@ -2793,7 +2876,7 @@ namespace {
          */
         public static function prepareBindings($bindings){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::prepareBindings($bindings);
+            return \Jenssegers\Mongodb\Connection::prepareBindings($bindings);
         }
         
         /**
@@ -2806,7 +2889,7 @@ namespace {
          */
         public static function transaction($callback){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::transaction($callback);
+            return \Jenssegers\Mongodb\Connection::transaction($callback);
         }
         
         /**
@@ -2817,7 +2900,7 @@ namespace {
          */
         public static function beginTransaction(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\MySqlConnection::beginTransaction();
+            \Jenssegers\Mongodb\Connection::beginTransaction();
         }
         
         /**
@@ -2828,7 +2911,7 @@ namespace {
          */
         public static function commit(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\MySqlConnection::commit();
+            \Jenssegers\Mongodb\Connection::commit();
         }
         
         /**
@@ -2839,7 +2922,7 @@ namespace {
          */
         public static function rollBack(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\MySqlConnection::rollBack();
+            \Jenssegers\Mongodb\Connection::rollBack();
         }
         
         /**
@@ -2850,7 +2933,7 @@ namespace {
          */
         public static function transactionLevel(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::transactionLevel();
+            return \Jenssegers\Mongodb\Connection::transactionLevel();
         }
         
         /**
@@ -2862,7 +2945,7 @@ namespace {
          */
         public static function pretend($callback){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::pretend($callback);
+            return \Jenssegers\Mongodb\Connection::pretend($callback);
         }
         
         /**
@@ -2876,7 +2959,7 @@ namespace {
          */
         public static function logQuery($query, $bindings, $time = null){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\MySqlConnection::logQuery($query, $bindings, $time);
+            \Jenssegers\Mongodb\Connection::logQuery($query, $bindings, $time);
         }
         
         /**
@@ -2888,7 +2971,7 @@ namespace {
          */
         public static function listen($callback){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\MySqlConnection::listen($callback);
+            \Jenssegers\Mongodb\Connection::listen($callback);
         }
         
         /**
@@ -2901,7 +2984,7 @@ namespace {
          */
         public static function getDoctrineColumn($table, $column){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::getDoctrineColumn($table, $column);
+            return \Jenssegers\Mongodb\Connection::getDoctrineColumn($table, $column);
         }
         
         /**
@@ -2912,7 +2995,7 @@ namespace {
          */
         public static function getDoctrineSchemaManager(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::getDoctrineSchemaManager();
+            return \Jenssegers\Mongodb\Connection::getDoctrineSchemaManager();
         }
         
         /**
@@ -2923,7 +3006,7 @@ namespace {
          */
         public static function getDoctrineConnection(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::getDoctrineConnection();
+            return \Jenssegers\Mongodb\Connection::getDoctrineConnection();
         }
         
         /**
@@ -2934,7 +3017,7 @@ namespace {
          */
         public static function getPdo(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::getPdo();
+            return \Jenssegers\Mongodb\Connection::getPdo();
         }
         
         /**
@@ -2945,7 +3028,7 @@ namespace {
          */
         public static function getReadPdo(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::getReadPdo();
+            return \Jenssegers\Mongodb\Connection::getReadPdo();
         }
         
         /**
@@ -2957,7 +3040,7 @@ namespace {
          */
         public static function setPdo($pdo){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::setPdo($pdo);
+            return \Jenssegers\Mongodb\Connection::setPdo($pdo);
         }
         
         /**
@@ -2969,7 +3052,7 @@ namespace {
          */
         public static function setReadPdo($pdo){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::setReadPdo($pdo);
+            return \Jenssegers\Mongodb\Connection::setReadPdo($pdo);
         }
         
         /**
@@ -2981,7 +3064,7 @@ namespace {
          */
         public static function setReconnector($reconnector){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::setReconnector($reconnector);
+            return \Jenssegers\Mongodb\Connection::setReconnector($reconnector);
         }
         
         /**
@@ -2992,7 +3075,7 @@ namespace {
          */
         public static function getName(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::getName();
+            return \Jenssegers\Mongodb\Connection::getName();
         }
         
         /**
@@ -3004,18 +3087,7 @@ namespace {
          */
         public static function getConfig($option){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::getConfig($option);
-        }
-        
-        /**
-         * Get the PDO driver name.
-         *
-         * @return string 
-         * @static 
-         */
-        public static function getDriverName(){
-            //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::getDriverName();
+            return \Jenssegers\Mongodb\Connection::getConfig($option);
         }
         
         /**
@@ -3026,7 +3098,7 @@ namespace {
          */
         public static function getQueryGrammar(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::getQueryGrammar();
+            return \Jenssegers\Mongodb\Connection::getQueryGrammar();
         }
         
         /**
@@ -3038,7 +3110,7 @@ namespace {
          */
         public static function setQueryGrammar($grammar){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\MySqlConnection::setQueryGrammar($grammar);
+            \Jenssegers\Mongodb\Connection::setQueryGrammar($grammar);
         }
         
         /**
@@ -3049,7 +3121,7 @@ namespace {
          */
         public static function getSchemaGrammar(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::getSchemaGrammar();
+            return \Jenssegers\Mongodb\Connection::getSchemaGrammar();
         }
         
         /**
@@ -3061,7 +3133,7 @@ namespace {
          */
         public static function setSchemaGrammar($grammar){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\MySqlConnection::setSchemaGrammar($grammar);
+            \Jenssegers\Mongodb\Connection::setSchemaGrammar($grammar);
         }
         
         /**
@@ -3072,7 +3144,7 @@ namespace {
          */
         public static function getPostProcessor(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::getPostProcessor();
+            return \Jenssegers\Mongodb\Connection::getPostProcessor();
         }
         
         /**
@@ -3084,7 +3156,7 @@ namespace {
          */
         public static function setPostProcessor($processor){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\MySqlConnection::setPostProcessor($processor);
+            \Jenssegers\Mongodb\Connection::setPostProcessor($processor);
         }
         
         /**
@@ -3095,7 +3167,7 @@ namespace {
          */
         public static function getEventDispatcher(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::getEventDispatcher();
+            return \Jenssegers\Mongodb\Connection::getEventDispatcher();
         }
         
         /**
@@ -3107,7 +3179,7 @@ namespace {
          */
         public static function setEventDispatcher($events){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\MySqlConnection::setEventDispatcher($events);
+            \Jenssegers\Mongodb\Connection::setEventDispatcher($events);
         }
         
         /**
@@ -3118,7 +3190,7 @@ namespace {
          */
         public static function pretending(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::pretending();
+            return \Jenssegers\Mongodb\Connection::pretending();
         }
         
         /**
@@ -3129,7 +3201,7 @@ namespace {
          */
         public static function getFetchMode(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::getFetchMode();
+            return \Jenssegers\Mongodb\Connection::getFetchMode();
         }
         
         /**
@@ -3141,7 +3213,7 @@ namespace {
          */
         public static function setFetchMode($fetchMode){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::setFetchMode($fetchMode);
+            return \Jenssegers\Mongodb\Connection::setFetchMode($fetchMode);
         }
         
         /**
@@ -3152,7 +3224,7 @@ namespace {
          */
         public static function getQueryLog(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::getQueryLog();
+            return \Jenssegers\Mongodb\Connection::getQueryLog();
         }
         
         /**
@@ -3163,7 +3235,7 @@ namespace {
          */
         public static function flushQueryLog(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\MySqlConnection::flushQueryLog();
+            \Jenssegers\Mongodb\Connection::flushQueryLog();
         }
         
         /**
@@ -3174,7 +3246,7 @@ namespace {
          */
         public static function enableQueryLog(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\MySqlConnection::enableQueryLog();
+            \Jenssegers\Mongodb\Connection::enableQueryLog();
         }
         
         /**
@@ -3185,7 +3257,7 @@ namespace {
          */
         public static function disableQueryLog(){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\MySqlConnection::disableQueryLog();
+            \Jenssegers\Mongodb\Connection::disableQueryLog();
         }
         
         /**
@@ -3196,7 +3268,7 @@ namespace {
          */
         public static function logging(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::logging();
+            return \Jenssegers\Mongodb\Connection::logging();
         }
         
         /**
@@ -3207,7 +3279,7 @@ namespace {
          */
         public static function getDatabaseName(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::getDatabaseName();
+            return \Jenssegers\Mongodb\Connection::getDatabaseName();
         }
         
         /**
@@ -3219,7 +3291,7 @@ namespace {
          */
         public static function setDatabaseName($database){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::setDatabaseName($database);
+            return \Jenssegers\Mongodb\Connection::setDatabaseName($database);
         }
         
         /**
@@ -3230,7 +3302,7 @@ namespace {
          */
         public static function getTablePrefix(){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::getTablePrefix();
+            return \Jenssegers\Mongodb\Connection::getTablePrefix();
         }
         
         /**
@@ -3242,7 +3314,7 @@ namespace {
          */
         public static function setTablePrefix($prefix){
             //Method inherited from \Illuminate\Database\Connection            
-            \Illuminate\Database\MySqlConnection::setTablePrefix($prefix);
+            \Jenssegers\Mongodb\Connection::setTablePrefix($prefix);
         }
         
         /**
@@ -3254,7 +3326,7 @@ namespace {
          */
         public static function withTablePrefix($grammar){
             //Method inherited from \Illuminate\Database\Connection            
-            return \Illuminate\Database\MySqlConnection::withTablePrefix($grammar);
+            return \Jenssegers\Mongodb\Connection::withTablePrefix($grammar);
         }
         
     }
@@ -4318,11 +4390,12 @@ namespace {
         /**
          * Get the count of the total records for the paginator.
          *
+         * @param array $columns
          * @return int 
          * @static 
          */
-        public static function getCountForPagination(){
-            return \Illuminate\Database\Query\Builder::getCountForPagination();
+        public static function getCountForPagination($columns = array()){
+            return \Illuminate\Database\Query\Builder::getCountForPagination($columns);
         }
         
         /**
@@ -4362,7 +4435,7 @@ namespace {
          * Retrieve the minimum value of a given column.
          *
          * @param string $column
-         * @return mixed 
+         * @return float|int 
          * @static 
          */
         public static function min($column){
@@ -4373,7 +4446,7 @@ namespace {
          * Retrieve the maximum value of a given column.
          *
          * @param string $column
-         * @return mixed 
+         * @return float|int 
          * @static 
          */
         public static function max($column){
@@ -4384,7 +4457,7 @@ namespace {
          * Retrieve the sum of the values of a given column.
          *
          * @param string $column
-         * @return mixed 
+         * @return float|int 
          * @static 
          */
         public static function sum($column){
@@ -4395,7 +4468,7 @@ namespace {
          * Retrieve the average of the values of a given column.
          *
          * @param string $column
-         * @return mixed 
+         * @return float|int 
          * @static 
          */
         public static function avg($column){
@@ -4407,7 +4480,7 @@ namespace {
          *
          * @param string $function
          * @param array $columns
-         * @return mixed 
+         * @return float|int 
          * @static 
          */
         public static function aggregate($function, $columns = array()){
@@ -4601,7 +4674,7 @@ namespace {
         /**
          * Register an event subscriber with the dispatcher.
          *
-         * @param string $subscriber
+         * @param object|string $subscriber
          * @return void 
          * @static 
          */
@@ -5355,7 +5428,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function query($key = null, $default = null){
@@ -5378,7 +5451,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function cookie($key = null, $default = null){
@@ -5413,7 +5486,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function header($key = null, $default = null){
@@ -5425,7 +5498,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function server($key = null, $default = null){
@@ -7972,7 +8045,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function query($key = null, $default = null){
@@ -7995,7 +8068,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function cookie($key = null, $default = null){
@@ -8030,7 +8103,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function header($key = null, $default = null){
@@ -8042,7 +8115,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function server($key = null, $default = null){
@@ -10023,25 +10096,72 @@ namespace {
     class Schema extends \Illuminate\Support\Facades\Schema{
         
         /**
-         * Determine if the given table exists.
+         * Determine if the given collection exists.
          *
-         * @param string $table
+         * @param string $collection
          * @return bool 
          * @static 
          */
-        public static function hasTable($table){
-            return \Illuminate\Database\Schema\MySqlBuilder::hasTable($table);
+        public static function hasCollection($collection){
+            return \Jenssegers\Mongodb\Schema\Builder::hasCollection($collection);
         }
         
         /**
-         * Get the column listing for a given table.
+         * Determine if the given collection exists.
          *
-         * @param string $table
-         * @return array 
+         * @param string $collection
+         * @return bool 
          * @static 
          */
-        public static function getColumnListing($table){
-            return \Illuminate\Database\Schema\MySqlBuilder::getColumnListing($table);
+        public static function hasTable($collection){
+            return \Jenssegers\Mongodb\Schema\Builder::hasTable($collection);
+        }
+        
+        /**
+         * Modify a collection on the schema.
+         *
+         * @param string $collection
+         * @param \Closure $callback
+         * @return bool 
+         * @static 
+         */
+        public static function collection($collection, $callback){
+            return \Jenssegers\Mongodb\Schema\Builder::collection($collection, $callback);
+        }
+        
+        /**
+         * Modify a collection on the schema.
+         *
+         * @param string $collection
+         * @param \Closure $callback
+         * @return bool 
+         * @static 
+         */
+        public static function table($collection, $callback){
+            return \Jenssegers\Mongodb\Schema\Builder::table($collection, $callback);
+        }
+        
+        /**
+         * Create a new collection on the schema.
+         *
+         * @param string $collection
+         * @param \Closure $callback
+         * @return bool 
+         * @static 
+         */
+        public static function create($collection, $callback = null){
+            return \Jenssegers\Mongodb\Schema\Builder::create($collection, $callback);
+        }
+        
+        /**
+         * Drop a collection from the schema.
+         *
+         * @param string $collection
+         * @return bool 
+         * @static 
+         */
+        public static function drop($collection){
+            return \Jenssegers\Mongodb\Schema\Builder::drop($collection);
         }
         
         /**
@@ -10054,45 +10174,32 @@ namespace {
          */
         public static function hasColumn($table, $column){
             //Method inherited from \Illuminate\Database\Schema\Builder            
-            return \Illuminate\Database\Schema\MySqlBuilder::hasColumn($table, $column);
+            return \Jenssegers\Mongodb\Schema\Builder::hasColumn($table, $column);
         }
         
         /**
-         * Modify a table on the schema.
+         * Determine if the given table has given columns.
          *
          * @param string $table
-         * @param \Closure $callback
-         * @return \Illuminate\Database\Schema\Blueprint 
+         * @param array $columns
+         * @return bool 
          * @static 
          */
-        public static function table($table, $callback){
+        public static function hasColumns($table, $columns){
             //Method inherited from \Illuminate\Database\Schema\Builder            
-            return \Illuminate\Database\Schema\MySqlBuilder::table($table, $callback);
+            return \Jenssegers\Mongodb\Schema\Builder::hasColumns($table, $columns);
         }
         
         /**
-         * Create a new table on the schema.
+         * Get the column listing for a given table.
          *
          * @param string $table
-         * @param \Closure $callback
-         * @return \Illuminate\Database\Schema\Blueprint 
+         * @return array 
          * @static 
          */
-        public static function create($table, $callback){
+        public static function getColumnListing($table){
             //Method inherited from \Illuminate\Database\Schema\Builder            
-            return \Illuminate\Database\Schema\MySqlBuilder::create($table, $callback);
-        }
-        
-        /**
-         * Drop a table from the schema.
-         *
-         * @param string $table
-         * @return \Illuminate\Database\Schema\Blueprint 
-         * @static 
-         */
-        public static function drop($table){
-            //Method inherited from \Illuminate\Database\Schema\Builder            
-            return \Illuminate\Database\Schema\MySqlBuilder::drop($table);
+            return \Jenssegers\Mongodb\Schema\Builder::getColumnListing($table);
         }
         
         /**
@@ -10104,7 +10211,7 @@ namespace {
          */
         public static function dropIfExists($table){
             //Method inherited from \Illuminate\Database\Schema\Builder            
-            return \Illuminate\Database\Schema\MySqlBuilder::dropIfExists($table);
+            return \Jenssegers\Mongodb\Schema\Builder::dropIfExists($table);
         }
         
         /**
@@ -10117,7 +10224,7 @@ namespace {
          */
         public static function rename($from, $to){
             //Method inherited from \Illuminate\Database\Schema\Builder            
-            return \Illuminate\Database\Schema\MySqlBuilder::rename($from, $to);
+            return \Jenssegers\Mongodb\Schema\Builder::rename($from, $to);
         }
         
         /**
@@ -10128,7 +10235,7 @@ namespace {
          */
         public static function getConnection(){
             //Method inherited from \Illuminate\Database\Schema\Builder            
-            return \Illuminate\Database\Schema\MySqlBuilder::getConnection();
+            return \Jenssegers\Mongodb\Schema\Builder::getConnection();
         }
         
         /**
@@ -10140,7 +10247,7 @@ namespace {
          */
         public static function setConnection($connection){
             //Method inherited from \Illuminate\Database\Schema\Builder            
-            return \Illuminate\Database\Schema\MySqlBuilder::setConnection($connection);
+            return \Jenssegers\Mongodb\Schema\Builder::setConnection($connection);
         }
         
         /**
@@ -10152,7 +10259,7 @@ namespace {
          */
         public static function blueprintResolver($resolver){
             //Method inherited from \Illuminate\Database\Schema\Builder            
-            \Illuminate\Database\Schema\MySqlBuilder::blueprintResolver($resolver);
+            \Jenssegers\Mongodb\Schema\Builder::blueprintResolver($resolver);
         }
         
     }
@@ -11533,6 +11640,17 @@ namespace {
          */
         public static function getShared(){
             return \Illuminate\View\Factory::getShared();
+        }
+        
+        /**
+         * Check if section exists.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */
+        public static function hasSection($name){
+            return \Illuminate\View\Factory::hasSection($name);
         }
         
         /**
