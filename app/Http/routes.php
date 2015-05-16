@@ -1,2 +1,2 @@
 <?php
-Route::resource('/  ', 'EventController', ['only' => ['index', 'show', 'store', 'update', 'destroy']]);
+    Route::resource('/event', 'EventController', ['only' => ['index', 'show', 'store', 'update', 'destroy']]);

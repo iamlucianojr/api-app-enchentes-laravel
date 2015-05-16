@@ -2,6 +2,7 @@
 
 use App\Repositories\EventRepository;
 use Illuminate\Http\Request;
+use Response;
 
 /**
  * Class EventController
@@ -40,9 +41,20 @@ class EventController extends Controller
      */
 	public function store(EventRepository $repository, Request $request)
 	{
-        $parameters = $request->json()->all();
 
-        return $repository->create($parameters);
+//        $this->validate($request, [
+//                'title'         => 'required|max:255',
+//                'description'   => 'required',
+//                'latitude'      => 'required|max:100',
+//                'longitude'     => 'required|max:100',
+//                'type'          => 'required',
+//            ],
+//            [
+//                'required'  => 'The :attribute field is required',
+//                'max'       => 'The :attribute field having a max limit of length :max'
+//            ]
+//        );
+        return $repository->create($request->json()->all());
 	}
 
     /**
@@ -71,23 +83,32 @@ class EventController extends Controller
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
+	 * @param EventRepository $repository
+	 * @param Request $request
+	 * @param  int $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(EventRepository $repository, Request $request, $id)
 	{
-		//
+        $event = $repository->find($id);
+        $aRequest = $request->json()->all();
+        foreach ($aRequest as $key => $value) {
+            $event->setAttribute($key, $value);
+        }
+
+        $event->save();
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param EventRepository $repository
+     * @param  int $id
+     * @return Response
+     */
+	public function destroy(EventRepository $repository, $id)
 	{
-		//
+        $repository->delete($id);
 	}
 
 }
