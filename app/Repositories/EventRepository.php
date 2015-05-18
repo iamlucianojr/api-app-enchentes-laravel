@@ -1,7 +1,7 @@
 <?php namespace App\Repositories;
 
 
-use App\Repositories\Eloquent\Repository;
+use App\Repositories\Mongo\Repository;
 
 class EventRepository extends Repository {
 

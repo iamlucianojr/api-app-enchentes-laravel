@@ -2,6 +2,7 @@
 
 use Doctrine\Instantiator\Exception\InvalidArgumentException;
 use Jenssegers\Mongodb\Model as Model;
+
 class Event extends Model
 {
 	protected $collection = 'events';
@@ -26,6 +27,5 @@ class Event extends Model
         }
         $this->setAttribute('title', $title);
     }
-
 
 }

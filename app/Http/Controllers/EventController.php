@@ -10,7 +10,6 @@ use Response;
  */
 class EventController extends Controller
 {
-    protected $model;
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -20,16 +19,6 @@ class EventController extends Controller
 	public function index(EventRepository $repository)
 	{
 		return $repository->all();
-	}
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-
 	}
 
     /**
@@ -54,7 +43,7 @@ class EventController extends Controller
 //                'max'       => 'The :attribute field having a max limit of length :max'
 //            ]
 //        );
-        return $repository->create($request->json()->all());
+		return $repository->create($request->json()->all());
 	}
 
     /**
@@ -67,17 +56,6 @@ class EventController extends Controller
 	public function show(EventRepository $repository, $id)
 	{
 		return $repository->find($id);
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
 	}
 
 	/**
