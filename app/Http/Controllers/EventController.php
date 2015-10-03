@@ -1,35 +1,38 @@
-<?php namespace App\Http\Controllers;
+<?php
+
+namespace app\Http\Controllers;
 
 use App\Repositories\EventRepository;
 use Illuminate\Http\Request;
 use Response;
 
 /**
- * Class EventController
- * @package App\Http\Controllers
+ * Class EventController.
  */
 class EventController extends Controller
 {
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @param EventRepository $repository
-	 * @return Response
-	 */
-	public function index(EventRepository $repository)
-	{
-		return $repository->all();
-	}
+    /**
+     * Display a listing of the resource.
+     *
+     * @param EventRepository $repository
+     *
+     * @return Response
+     */
+    public function index(EventRepository $repository)
+    {
+        return $repository->all();
+    }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param EventRepository $repository
-     * @param Request $request
+     * @param Request         $request
+     *
      * @return Response
      */
-	public function store(EventRepository $repository, Request $request)
-	{
+    public function store(EventRepository $repository, Request $request)
+    {
 
 //        $this->validate($request, [
 //                'title'         => 'required|max:255',
@@ -43,31 +46,33 @@ class EventController extends Controller
 //                'max'       => 'The :attribute field having a max limit of length :max'
 //            ]
 //        );
-		return $repository->create($request->json()->all());
-	}
+        return $repository->create($request->json()->all());
+    }
 
     /**
      * Display the specified resource.
      *
      * @param EventRepository $repository
-     * @param  int $id
+     * @param int             $id
+     *
      * @return Response
      */
-	public function show(EventRepository $repository, $id)
-	{
-		return $repository->find($id);
-	}
+    public function show(EventRepository $repository, $id)
+    {
+        return $repository->find($id);
+    }
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param EventRepository $repository
-	 * @param Request $request
-	 * @param  int $id
-	 * @return Response
-	 */
-	public function update(EventRepository $repository, Request $request, $id)
-	{
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param EventRepository $repository
+     * @param Request         $request
+     * @param int             $id
+     *
+     * @return Response
+     */
+    public function update(EventRepository $repository, Request $request, $id)
+    {
         $event = $repository->find($id);
         $aRequest = $request->json()->all();
         foreach ($aRequest as $key => $value) {
@@ -75,18 +80,18 @@ class EventController extends Controller
         }
 
         $event->save();
-	}
+    }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param EventRepository $repository
-     * @param  int $id
+     * @param int             $id
+     *
      * @return Response
      */
-	public function destroy(EventRepository $repository, $id)
-	{
+    public function destroy(EventRepository $repository, $id)
+    {
         $repository->delete($id);
-	}
-
+    }
 }

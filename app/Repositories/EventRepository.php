@@ -1,12 +1,13 @@
-<?php namespace App\Repositories;
+<?php
 
+namespace app\Repositories;
 
 use App\Repositories\Mongo\Repository;
 
-class EventRepository extends Repository {
-
+class EventRepository extends Repository
+{
     /**
-     * Specify Model class name
+     * Specify Model class name.
      *
      * @return mixed
      */
