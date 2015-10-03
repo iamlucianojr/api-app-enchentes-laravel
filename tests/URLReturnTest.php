@@ -11,6 +11,7 @@ use Laracasts\TestDummy\Factory;
 class URLReturnTest extends TestCase
 {
     protected $eventTest;
+
     protected function assertPreConditions()
     {
         parent::assertPreConditions();
