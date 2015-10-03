@@ -1,15 +1,13 @@
 <?php
-use App\Http\Controllers\EventController;
-use \Mockery as m;
+
 use Laracasts\TestDummy\Factory;
 
 /**
  * Created by PhpStorm.
  * User: luciano
  * Date: 14/05/15
- * Time: 11:12
+ * Time: 11:12.
  */
-
 class URLReturnTest extends TestCase
 {
     protected $eventTest;
@@ -27,12 +25,10 @@ class URLReturnTest extends TestCase
         );
     }
 
-
     /** @test **/
     public function test_it_event_is_save()
     {
         $this->eventTest = Factory::create('App\Event', ['title' => 'Test unit']);
-
     }
 
     /**

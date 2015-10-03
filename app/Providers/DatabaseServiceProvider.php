@@ -1,27 +1,27 @@
-<?php namespace App\Providers;
+<?php
+
+namespace app\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class DatabaseServiceProvider extends ServiceProvider {
+class DatabaseServiceProvider extends ServiceProvider
+{
+    /**
+     * Bootstrap the application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->app->bind('App\Repositories\EventRepositoryInterface', 'App\Repositories\EventRepositoryEloquent');
+    }
 
-	/**
-	 * Bootstrap the application services.
-	 *
-	 * @return void
-	 */
-	public function boot()
-	{
-		$this->app->bind('App\Repositories\EventRepositoryInterface', 'App\Repositories\EventRepositoryEloquent');
-	}
-
-	/**
-	 * Register the application services.
-	 *
-	 * @return void
-	 */
-	public function register()
-	{
-
-	}
-
+    /**
+     * Register the application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+    }
 }
